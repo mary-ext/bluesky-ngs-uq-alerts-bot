@@ -9,7 +9,7 @@ export const enum EventType {
 	STIA = 4,
 }
 
-export const events = new Map([
+export const eventMap = new Map([
 	// Concerts
 	[`Song of War & Mourning`, EventType.SPECIAL],
 

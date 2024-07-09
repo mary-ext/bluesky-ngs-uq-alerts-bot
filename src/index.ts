@@ -1,7 +1,7 @@
 import { BskyAuth, BskyXRPC } from '@mary/bluesky-client';
 import type { AppBskyFeedPost } from '@mary/bluesky-client/lexicons';
 
-import { events } from './events';
+import { getPostText, scrape } from './urgent';
 
 export default {
 	async scheduled(_event, env, _ctx): Promise<void> {
@@ -15,14 +15,11 @@ export default {
 		}
 
 		const source = await response.text();
+		const events = scrape(source);
 
-		const matches = Array.from(source.matchAll(/>([0-9:]{5})[^]+?>([^]+?)</g), (match) => {
-			return { time: match[1], name: match[2] };
-		});
+		console.log(`got ${events.length} events`);
 
-		console.log(`got ${matches.length} events`);
-
-		if (matches.length === 0) {
+		if (events.length === 0) {
 			return;
 		}
 
@@ -34,19 +31,7 @@ export default {
 			console.log(`signed in as ${auth.session!.did}`);
 		}
 
-		let text = '';
-
-		{
-			const sortedMatches = matches.toSorted((a, b) => {
-				return (events.get(a.name) ?? -1) - (events.get(b.name) ?? -1) || a.name.localeCompare(b.name);
-			});
-
-			text = `#pso2ngs Global Alerts (${getCurrentTime()})`;
-
-			for (const { time, name } of sortedMatches) {
-				text += `\n${time} - ${name}`;
-			}
-		}
+		const text = getPostText(events);
 
 		{
 			const record: AppBskyFeedPost.Record = {
@@ -66,13 +51,3 @@ export default {
 		}
 	},
 } satisfies ExportedHandler<Env>;
-
-function getCurrentTime(): string {
-	const fmt = new Intl.DateTimeFormat('en-US', {
-		timeStyle: 'short',
-		timeZone: 'UTC',
-		hour12: false,
-	});
-
-	return fmt.format(Date.now());
-}

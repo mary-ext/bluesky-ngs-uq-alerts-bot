@@ -1,0 +1,19 @@
+{
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev --test-scheduled",
+		"start": "wrangler dev --test-scheduled",
+		"cf-typegen": "wrangler types",
+		"fmt": "prettier --cache --write ."
+	},
+	"dependencies": {
+		"@mary/bluesky-client": "npm:@jsr/mary__bluesky-client@^0.5.25"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20240620.0",
+		"prettier": "^3.3.2",
+		"typescript": "^5.4.5",
+		"wrangler": "^3.60.3"
+	}
+}

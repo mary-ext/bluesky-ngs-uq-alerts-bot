@@ -1,3 +1,5 @@
+import RichtextBuilder, { type BakedRichtext } from '@mary/bluesky-richtext-builder';
+
 import { eventMap } from './events';
 
 export interface UrgentEvent {
@@ -12,22 +14,21 @@ export function scrape(source: string): UrgentEvent[] {
 	);
 }
 
-export function getPostText(events: UrgentEvent[]): string {
+export function getPostRichtext(events: UrgentEvent[]): BakedRichtext {
 	const sortedMatches = events.toSorted((a, b) => {
 		return (eventMap.get(a.name) ?? -1) - (eventMap.get(b.name) ?? -1) || a.name.localeCompare(b.name);
 	});
 
-	let text = '';
+	const builder = new RichtextBuilder();
 
-	{
-		text = `#pso2ngs Global Alerts (${getCurrentTime()})`;
+	builder.addTag('pso2ngs');
+	builder.addText(` Global Alerts (${getCurrentTime()})`);
 
-		for (const { time, name } of sortedMatches) {
-			text += `\n${time} - ${name}`;
-		}
+	for (const { time, name } of sortedMatches) {
+		builder.addText(`\n${time} - ${name}`);
 	}
 
-	return text;
+	return builder.build();
 }
 
 function getCurrentTime(): string {

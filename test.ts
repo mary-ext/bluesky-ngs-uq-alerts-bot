@@ -1,4 +1,4 @@
-import { getPostText, scrape } from './src/urgent';
+import { getPostRichtext, scrape } from './src/urgent';
 
 const source =
 	`<script src="/cdn-cgi/apps/head/dsFpVOvNEklLYGoVvI1dC01gu0g.js"></script>` +
@@ -12,7 +12,7 @@ const source =
 	`</p>`;
 
 const events = scrape(source);
-const text = getPostText(events);
+const rt = getPostRichtext(events);
 
 console.log(events);
-console.log(text);
+console.log(rt.text);

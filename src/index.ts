@@ -1,7 +1,7 @@
 import { BskyAuth, BskyXRPC } from '@mary/bluesky-client';
 import type { AppBskyFeedPost } from '@mary/bluesky-client/lexicons';
 
-import { getPostText, scrape } from './urgent';
+import { getPostRichtext, scrape } from './urgent';
 
 export default {
 	async scheduled(_event, env, _ctx): Promise<void> {
@@ -31,12 +31,13 @@ export default {
 			console.log(`signed in as ${auth.session!.did}`);
 		}
 
-		const text = getPostText(events);
+		const { text, facets } = getPostRichtext(events);
 
 		{
 			const record: AppBskyFeedPost.Record = {
 				createdAt: new Date().toISOString(),
 				text: text,
+				facets: facets,
 			};
 
 			const { data } = await rpc.call('com.atproto.repo.createRecord', {

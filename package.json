@@ -8,7 +8,8 @@
 		"fmt": "prettier --cache --write ."
 	},
 	"dependencies": {
-		"@mary/bluesky-client": "npm:@jsr/mary__bluesky-client@^0.5.25"
+		"@mary/bluesky-client": "npm:@jsr/mary__bluesky-client@^0.5.25",
+		"@mary/bluesky-richtext-builder": "npm:@jsr/mary__bluesky-richtext-builder@^0.1.2"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240620.0",

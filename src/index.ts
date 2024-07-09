@@ -1,6 +1,8 @@
 import { BskyAuth, BskyXRPC } from '@mary/bluesky-client';
 import type { AppBskyFeedPost } from '@mary/bluesky-client/lexicons';
 
+import { events } from './events';
+
 export default {
 	async scheduled(_event, env, _ctx): Promise<void> {
 		const response = await fetch(
@@ -35,9 +37,13 @@ export default {
 		let text = '';
 
 		{
+			const sortedMatches = matches.toSorted((a, b) => {
+				return (events.get(a.name) ?? -1) - (events.get(b.name) ?? -1) || a.name.localeCompare(b.name);
+			});
+
 			text = `#pso2ngs Global Alerts (${getCurrentTime()})`;
 
-			for (const { time, name } of matches) {
+			for (const { time, name } of sortedMatches) {
 				text += `\n${time} - ${name}`;
 			}
 		}

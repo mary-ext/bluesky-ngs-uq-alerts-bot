@@ -22,7 +22,7 @@ export function getPostRichtext(events: UrgentEvent[]): BakedRichtext {
 	const builder = new RichtextBuilder();
 
 	builder.addTag('pso2ngs');
-	builder.addText(` Global Alerts (${getCurrentTime()})`);
+	builder.addText(` Global Alerts (${getCurrentTime()} UTC)`);
 
 	for (const { time, name } of sortedMatches) {
 		builder.addText(`\n${time} - ${name}`);

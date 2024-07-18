@@ -1,0 +1,67 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@mary/atproto-cbor@^0.1.0": "jsr:@mary/atproto-cbor@0.1.0",
+      "jsr:@mary/atproto-cid@^0.1.4": "jsr:@mary/atproto-cid@0.1.4",
+      "jsr:@mary/atproto-tid@^0.1.1": "jsr:@mary/atproto-tid@0.1.1",
+      "jsr:@mary/base32@^0.1.0": "jsr:@mary/base32@0.1.0",
+      "jsr:@mary/bluesky-client@^0.5.26": "jsr:@mary/bluesky-client@0.5.26",
+      "jsr:@mary/bluesky-threading@^0.1.3": "jsr:@mary/bluesky-threading@0.1.3",
+      "jsr:@mary/varint@^0.1.0": "jsr:@mary/varint@0.1.0",
+      "npm:cborg@^4.2.3": "npm:cborg@4.2.3"
+    },
+    "jsr": {
+      "@mary/atproto-cbor@0.1.0": {
+        "integrity": "de45c04f80ad13aa6e7c89997c9feb018722f9ff57722f684bbe446cea341c90",
+        "dependencies": [
+          "jsr:@mary/atproto-cid@^0.1.4",
+          "jsr:@mary/base32@^0.1.0",
+          "npm:cborg@^4.2.3"
+        ]
+      },
+      "@mary/atproto-cid@0.1.4": {
+        "integrity": "e62e3583e354a353ec52646891cd8c2ee801d51b1be2efd8380c51a778c3fddb",
+        "dependencies": [
+          "jsr:@mary/base32@^0.1.0",
+          "jsr:@mary/varint@^0.1.0"
+        ]
+      },
+      "@mary/atproto-tid@0.1.1": {
+        "integrity": "f9fcb9528b36b3283dd6b5ceeffff529788efc3285e7ea47d80301c29bc563cb"
+      },
+      "@mary/base32@0.1.0": {
+        "integrity": "e9b163a66ae858339906d951f408f539d2921233b33e2ba30358eca9caa2b6cd"
+      },
+      "@mary/bluesky-client@0.5.26": {
+        "integrity": "f09c802b5f742446a44f43a35a7b0405d8fe6d9fcfefb5989ef701307ae384db"
+      },
+      "@mary/bluesky-threading@0.1.3": {
+        "integrity": "c5e05a64ffecc26136fb221cfce1268a8873a7df3985cf5c7bca5a9aba558aaf",
+        "dependencies": [
+          "jsr:@mary/atproto-cbor@^0.1.0",
+          "jsr:@mary/atproto-cid@^0.1.4",
+          "jsr:@mary/atproto-tid@^0.1.1",
+          "jsr:@mary/bluesky-client@^0.5.26"
+        ]
+      },
+      "@mary/varint@0.1.0": {
+        "integrity": "47b3fe3b2e7edf4847dbb7d95ca304861541ccfe8298d1468e4a7b6369519fea"
+      }
+    },
+    "npm": {
+      "cborg@4.2.3": {
+        "integrity": "sha512-XBFbEJ6WMfn9L7woc2t+EzOxF8vGqddoopKBbrhIvZBt2WIUgSlT8xLmM6Aq1xv8eWt4yOSjwxWjYeuHU3CpJA==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "jsr:@mary/bluesky-client@^0.5.26",
+      "jsr:@mary/bluesky-richtext-builder@^0.1.2",
+      "jsr:@mary/bluesky-threading@^0.1.3"
+    ]
+  }
+}

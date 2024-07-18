@@ -1,0 +1,4 @@
+*.local.ts
+
+/data/
+!/data/.gitkeep

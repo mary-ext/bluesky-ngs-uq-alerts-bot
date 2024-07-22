@@ -6,8 +6,10 @@
       "jsr:@mary/atproto-cid@^0.1.4": "jsr:@mary/atproto-cid@0.1.4",
       "jsr:@mary/atproto-tid@^0.1.1": "jsr:@mary/atproto-tid@0.1.1",
       "jsr:@mary/base32@^0.1.0": "jsr:@mary/base32@0.1.0",
+      "jsr:@mary/bluesky-client@^0.5.25": "jsr:@mary/bluesky-client@0.5.26",
       "jsr:@mary/bluesky-client@^0.5.26": "jsr:@mary/bluesky-client@0.5.26",
-      "jsr:@mary/bluesky-threading@^0.1.3": "jsr:@mary/bluesky-threading@0.1.3",
+      "jsr:@mary/bluesky-richtext-builder@^0.1.2": "jsr:@mary/bluesky-richtext-builder@0.1.2",
+      "jsr:@mary/bluesky-threading@^0.1.4": "jsr:@mary/bluesky-threading@0.1.4",
       "jsr:@mary/varint@^0.1.0": "jsr:@mary/varint@0.1.0",
       "npm:cborg@^4.2.3": "npm:cborg@4.2.3"
     },
@@ -36,8 +38,14 @@
       "@mary/bluesky-client@0.5.26": {
         "integrity": "f09c802b5f742446a44f43a35a7b0405d8fe6d9fcfefb5989ef701307ae384db"
       },
-      "@mary/bluesky-threading@0.1.3": {
-        "integrity": "c5e05a64ffecc26136fb221cfce1268a8873a7df3985cf5c7bca5a9aba558aaf",
+      "@mary/bluesky-richtext-builder@0.1.2": {
+        "integrity": "deea3903c6f049d7e8cddb7799cb0b351d716b20b0007f49cea61d9bad15a9e3",
+        "dependencies": [
+          "jsr:@mary/bluesky-client@^0.5.25"
+        ]
+      },
+      "@mary/bluesky-threading@0.1.4": {
+        "integrity": "ecd17f98364cc0bfd7ffc6c76962a95c8f8342b420063d25c0ff0be63f583a44",
         "dependencies": [
           "jsr:@mary/atproto-cbor@^0.1.0",
           "jsr:@mary/atproto-cid@^0.1.4",
@@ -61,7 +69,7 @@
     "dependencies": [
       "jsr:@mary/bluesky-client@^0.5.26",
       "jsr:@mary/bluesky-richtext-builder@^0.1.2",
-      "jsr:@mary/bluesky-threading@^0.1.3"
+      "jsr:@mary/bluesky-threading@^0.1.4"
     ]
   }
 }

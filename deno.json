@@ -6,7 +6,7 @@
 	"imports": {
 		"@mary/bluesky-client": "jsr:@mary/bluesky-client@^0.5.26",
 		"@mary/bluesky-richtext-builder": "jsr:@mary/bluesky-richtext-builder@^0.1.2",
-		"@mary/bluesky-threading": "jsr:@mary/bluesky-threading@^0.1.4"
+		"@mary/bluesky-threading": "jsr:@mary/bluesky-threading@^0.1.5"
 	},
 	"fmt": {
 		"useTabs": true,

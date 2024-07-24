@@ -9,7 +9,7 @@
       "jsr:@mary/bluesky-client@^0.5.25": "jsr:@mary/bluesky-client@0.5.26",
       "jsr:@mary/bluesky-client@^0.5.26": "jsr:@mary/bluesky-client@0.5.26",
       "jsr:@mary/bluesky-richtext-builder@^0.1.2": "jsr:@mary/bluesky-richtext-builder@0.1.2",
-      "jsr:@mary/bluesky-threading@^0.1.5": "jsr:@mary/bluesky-threading@0.1.5",
+      "jsr:@mary/bluesky-threading@^0.1.6": "jsr:@mary/bluesky-threading@0.1.6",
       "jsr:@mary/varint@^0.1.0": "jsr:@mary/varint@0.1.0",
       "npm:cborg@^4.2.3": "npm:cborg@4.2.3"
     },
@@ -44,8 +44,8 @@
           "jsr:@mary/bluesky-client@^0.5.25"
         ]
       },
-      "@mary/bluesky-threading@0.1.5": {
-        "integrity": "ce9f95c776f2a157ce464a610f9c7c87f0081de5ffbc26b94dfe853d1f76ce1e",
+      "@mary/bluesky-threading@0.1.6": {
+        "integrity": "f72f6a258891c28fbb2af4a07063a71ea847cbbc29738c9a79a7e898e7633831",
         "dependencies": [
           "jsr:@mary/atproto-cbor@^0.1.0",
           "jsr:@mary/atproto-cid@^0.1.4",
@@ -69,7 +69,7 @@
     "dependencies": [
       "jsr:@mary/bluesky-client@^0.5.26",
       "jsr:@mary/bluesky-richtext-builder@^0.1.2",
-      "jsr:@mary/bluesky-threading@^0.1.5"
+      "jsr:@mary/bluesky-threading@^0.1.6"
     ]
   }
 }

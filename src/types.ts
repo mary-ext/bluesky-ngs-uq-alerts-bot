@@ -1,4 +1,4 @@
-import { ComposedPost } from '@mary/bluesky-threading';
+import { ComposedPost } from '@atcute/bluesky-threading';
 
 import { EventMap } from './events.ts';
 import { TimedEvent } from './urgent.ts';

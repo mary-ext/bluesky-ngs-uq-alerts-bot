@@ -4,9 +4,10 @@
 		"compile": "deno compile -A --output bluesky-pso2ngs-alerts src/mod.ts"
 	},
 	"imports": {
-		"@mary/bluesky-client": "jsr:@mary/bluesky-client@^0.5.26",
-		"@mary/bluesky-richtext-builder": "jsr:@mary/bluesky-richtext-builder@^0.1.2",
-		"@mary/bluesky-threading": "jsr:@mary/bluesky-threading@^0.1.6"
+		"@atcute/bluesky": "npm:@atcute/bluesky@^1.0.0",
+		"@atcute/bluesky-richtext-builder": "npm:@atcute/bluesky-richtext-builder@^1.0.0",
+		"@atcute/bluesky-threading": "npm:@atcute/bluesky-threading@^1.0.0",
+		"@atcute/client": "npm:@atcute/client@^1.0.0"
 	},
 	"fmt": {
 		"useTabs": true,

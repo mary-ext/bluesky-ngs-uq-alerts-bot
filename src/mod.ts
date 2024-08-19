@@ -1,6 +1,7 @@
-import { BskyAuth, BskyXRPC } from '@mary/bluesky-client';
-import { XRPCError } from '@mary/bluesky-client/xrpc';
-import { publishThread } from '@mary/bluesky-threading';
+import { XRPC, XRPCError } from '@atcute/client';
+import { AtpAuth } from '@atcute/client/middlewares/auth';
+
+import { publishThread } from '@atcute/bluesky-threading';
 
 import { scrape } from './urgent.ts';
 
@@ -36,8 +37,8 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 
 		const sessionFileUrl = `./data/${id}.session.json`;
 
-		const rpc = new BskyXRPC({ service: account.service });
-		const auth = new BskyAuth(rpc, {
+		const rpc = new XRPC({ service: account.service });
+		const auth = new AtpAuth(rpc, {
 			onSessionUpdate(session) {
 				Deno.writeTextFileSync(sessionFileUrl, JSON.stringify(session, null, '\t'));
 			},

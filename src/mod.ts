@@ -1,5 +1,4 @@
-import { XRPC, XRPCError } from '@atcute/client';
-import { AtpAuth } from '@atcute/client/middlewares/auth';
+import { CredentialManager, XRPC, XRPCError } from '@atcute/client';
 
 import { publishThread } from '@atcute/bluesky-threading';
 
@@ -37,8 +36,8 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 
 		const sessionFileUrl = `./data/${id}.session.json`;
 
-		const rpc = new XRPC({ service: account.service });
-		const auth = new AtpAuth(rpc, {
+		const auth = new CredentialManager({
+			service: account.service,
 			onSessionUpdate(session) {
 				Deno.writeTextFileSync(sessionFileUrl, JSON.stringify(session, null, '\t'));
 			},
@@ -54,6 +53,8 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 				}
 			},
 		});
+
+		const rpc = new XRPC({ handler: auth });
 
 		try {
 			const rawSession = Deno.readTextFileSync(sessionFileUrl);

@@ -11,7 +11,7 @@ await Deno.mkdir('./data', { recursive: true });
 for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 	console.log(`configuring ${id}`);
 
-	Deno.cron(`alert-${id}`, '18,48 * * * *', { backoffSchedule: [60_000, 60_000, 30_000] }, async () => {
+	Deno.cron(`alert-${id}`, '18,48 * * * *', { backoffSchedule: [60_000, 60_000, 60_000, 60_000] }, async () => {
 		console.log(`[${id}]: scraping the page`);
 
 		const response = await fetch(scrapeUrl, {

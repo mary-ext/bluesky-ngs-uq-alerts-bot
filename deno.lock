@@ -2,8 +2,8 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "npm:@atcute/bluesky-richtext-builder@^1.0.1": "npm:@atcute/bluesky-richtext-builder@1.0.1_@atcute+bluesky@1.0.6__@atcute+client@2.0.1_@atcute+client@2.0.1",
-      "npm:@atcute/bluesky-threading@^2.0.0": "npm:@atcute/bluesky-threading@2.0.0_@atcute+bluesky@1.0.6__@atcute+client@2.0.1_@atcute+client@2.0.1",
+      "npm:@atcute/bluesky-richtext-builder@^1.0.1": "npm:@atcute/bluesky-richtext-builder@1.0.1_@atcute+bluesky@1.0.7__@atcute+client@2.0.1_@atcute+client@2.0.1",
+      "npm:@atcute/bluesky-threading@^2.0.0": "npm:@atcute/bluesky-threading@2.0.0_@atcute+bluesky@1.0.7__@atcute+client@2.0.1_@atcute+client@2.0.1",
       "npm:@atcute/client@^2.0.1": "npm:@atcute/client@2.0.1"
     },
     "npm": {
@@ -11,25 +11,25 @@
         "integrity": "sha512-Mbjsv6kd/ymvDMGjCoh9eqhlpFsoJ6zYguU6xtKxqh1wGhe5rvBOfMRXsEqcp7srn8Bfp8QhevqLgmwrWvzqrA==",
         "dependencies": {}
       },
-      "@atcute/bluesky-richtext-builder@1.0.1_@atcute+bluesky@1.0.6__@atcute+client@2.0.1_@atcute+client@2.0.1": {
+      "@atcute/bluesky-richtext-builder@1.0.1_@atcute+bluesky@1.0.7__@atcute+client@2.0.1_@atcute+client@2.0.1": {
         "integrity": "sha512-msyKHZa47id7Oe2zHpgPSuL+l9vLQXmKfi6uyMOS5yw6nLpNd5Tdb96wcgwscMmyH8UR4EoM+2oYLvyH89DcEQ==",
         "dependencies": {
-          "@atcute/bluesky": "@atcute/bluesky@1.0.6_@atcute+client@2.0.1",
+          "@atcute/bluesky": "@atcute/bluesky@1.0.7_@atcute+client@2.0.1",
           "@atcute/client": "@atcute/client@2.0.1"
         }
       },
-      "@atcute/bluesky-threading@2.0.0_@atcute+bluesky@1.0.6__@atcute+client@2.0.1_@atcute+client@2.0.1": {
+      "@atcute/bluesky-threading@2.0.0_@atcute+bluesky@1.0.7__@atcute+client@2.0.1_@atcute+client@2.0.1": {
         "integrity": "sha512-kpmHQRwOPlNA1iLxQc5fU8JOyFqpthk90ouEhnUxzhKq05yCeSHux2bplpgnUL6F5OKcClKvBsaZs1g8PcEmbw==",
         "dependencies": {
-          "@atcute/bluesky": "@atcute/bluesky@1.0.6_@atcute+client@2.0.1",
+          "@atcute/bluesky": "@atcute/bluesky@1.0.7_@atcute+client@2.0.1",
           "@atcute/cbor": "@atcute/cbor@1.0.1",
           "@atcute/cid": "@atcute/cid@1.0.0",
           "@atcute/client": "@atcute/client@2.0.1",
           "@atcute/tid": "@atcute/tid@1.0.0"
         }
       },
-      "@atcute/bluesky@1.0.6_@atcute+client@2.0.1": {
-        "integrity": "sha512-RVhFwleInQYj5znVFRRL7Buun3PTTWuC1T0dWlEamkuDrMlmnXZ4LpzERMRyBnvMpFWDJGE2wJfKYrHNAWmY+g==",
+      "@atcute/bluesky@1.0.7_@atcute+client@2.0.1": {
+        "integrity": "sha512-2jPHzl7WbcqRtcAXanJy4Lp638ujqnoGmPCPmBlmpEDP34D7EVKQqjN/mlvglb5n539dThA9xlSgIS8yOxwzDA==",
         "dependencies": {
           "@atcute/client": "@atcute/client@2.0.1"
         }
@@ -72,7 +72,7 @@
     "dependencies": [
       "npm:@atcute/bluesky-richtext-builder@^1.0.1",
       "npm:@atcute/bluesky-threading@^2.0.0",
-      "npm:@atcute/bluesky@^1.0.6",
+      "npm:@atcute/bluesky@^1.0.7",
       "npm:@atcute/client@^2.0.1"
     ]
   }

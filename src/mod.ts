@@ -11,7 +11,7 @@ await Deno.mkdir('./data', { recursive: true });
 for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 	console.log(`configuring ${id}`);
 
-	Deno.cron(`alert-${id}`, '20,50 * * * *', { backoffSchedule: [2_000, 4_000, 8_000] }, async () => {
+	Deno.cron(`alert-${id}`, '18,48 * * * *', { backoffSchedule: [60_000, 60_000, 30_000] }, async () => {
 		console.log(`[${id}]: scraping the page`);
 
 		const response = await fetch(scrapeUrl, {
@@ -27,12 +27,11 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 		const source = await response.text();
 		const events = scrape(source, mappings);
 
-		console.log(`[${id}]: got ${events.length} events`);
-
 		if (events.length === 0) {
-			console.log(`[${id}]: skipping`);
-			return;
+			throw new Error(`empty response`);
 		}
+
+		console.log(`[${id}]: got ${events.length} events`);
 
 		const sessionFileUrl = `./data/${id}.session.json`;
 

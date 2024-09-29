@@ -14,9 +14,9 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 	Deno.cron(
 		`alert-${id}`,
 		'16,46 * * * *',
-		// 16 -> 18, 20, 21, 22
-		// 46 -> 48, 50, 51, 52
-		{ backoffSchedule: [120_000, 120_000, 60_000, 60_000] },
+		// 16 -> 18, 20, 22
+		// 46 -> 48, 50, 52
+		{ backoffSchedule: [120_000, 120_000, 120_000] },
 		async () => {
 			console.log(`[${id}]: scraping the page`);
 

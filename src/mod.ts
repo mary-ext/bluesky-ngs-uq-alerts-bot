@@ -6,6 +6,8 @@ import { scrape } from './urgent.ts';
 
 import configs from '../config.local.ts';
 
+const MINUTE = 60_000;
+
 await Deno.mkdir('./data', { recursive: true });
 
 for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
@@ -14,9 +16,9 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 	Deno.cron(
 		`alert-${id}`,
 		'16,46 * * * *',
-		// 16 -> 18, 20, 22
-		// 46 -> 48, 50, 52
-		{ backoffSchedule: [120_000, 120_000, 120_000] },
+		// 16 -> 18, 20, 22, 25
+		// 46 -> 48, 50, 52, 55
+		{ backoffSchedule: [MINUTE * 2, MINUTE * 2, MINUTE * 2, MINUTE * 3] },
 		async () => {
 			console.log(`[${id}]: scraping the page`);
 

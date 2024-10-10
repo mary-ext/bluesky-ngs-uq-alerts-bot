@@ -305,6 +305,13 @@ export const jpEvents: EventMap = {
 			jp: `ホーンテッドドメイン`,
 		},
 	},
+	[`Haunted Domain II`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Haunted Domain`,
+			jp: `ホーンテッドドメイン`,
+		},
+	},
 
 	// Kvaris UQ
 	[`Crocodallus Vera Subjugation`]: {

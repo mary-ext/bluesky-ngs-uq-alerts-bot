@@ -133,6 +133,13 @@ export const glEvents: EventMap = {
 			jp: `ホーンテッドドメイン`,
 		},
 	},
+	[`Haunted Domain II`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Haunted Domain`,
+			jp: `ホーンテッドドメイン`,
+		},
+	},
 
 	// Kvaris UQ
 	[`Crocodylis Vera Suppression Op`]: {

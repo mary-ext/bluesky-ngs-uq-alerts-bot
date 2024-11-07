@@ -140,6 +140,13 @@ export const glEvents: EventMap = {
 			jp: `ホーンテッドドメイン`,
 		},
 	},
+	[`Omen of the Planetbreaker D.2`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Omen of the Planetbreaker D.2`,
+			jp: `星滅の予兆D.2`,
+		},
+	},
 
 	// Kvaris UQ
 	[`Crocodylis Vera Suppression Op`]: {
@@ -317,6 +324,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `Haunted Domain`,
 			jp: `ホーンテッドドメイン`,
+		},
+	},
+	[`Omen of the Planetbreaker D.2`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Harbinger of Extinction D.2`,
+			jp: `星滅の予兆D.2`,
 		},
 	},
 

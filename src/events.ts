@@ -200,6 +200,13 @@ export const glEvents: EventMap = {
 			jp: `ドルドリス・ヴェラ討伐戦`,
 		},
 	},
+	[`Co-Op Starless Supression Op`]: {
+		type: EventType.STIA,
+		name: {
+			en: `Co-Op Starless Supression Op`,
+			jp: `協調型スターレス討伐戦`,
+		},
+	},
 
 	// Stia LTUQ
 	[`Happy Rappy Rumble: Stia`]: {
@@ -384,6 +391,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `Doldoris Vera Subjugation`,
 			jp: `ドルドリス・ヴェラ討伐戦`,
+		},
+	},
+	[`Simultaneous Starless Subjugation`]: {
+		type: EventType.STIA,
+		name: {
+			en: `Simultaneous Starless Subjugation`,
+			jp: `協調型スターレス討伐戦`,
 		},
 	},
 

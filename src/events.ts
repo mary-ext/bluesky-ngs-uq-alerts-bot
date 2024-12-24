@@ -200,10 +200,10 @@ export const glEvents: EventMap = {
 			jp: `ドルドリス・ヴェラ討伐戦`,
 		},
 	},
-	[`Co-Op Starless Supression Op`]: {
+	[`Co-Op Starless Suppression`]: {
 		type: EventType.STIA,
 		name: {
-			en: `Co-Op Starless Supression Op`,
+			en: `Co-Op Starless Suppression Op`,
 			jp: `協調型スターレス討伐戦`,
 		},
 	},

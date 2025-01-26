@@ -378,6 +378,15 @@ export const jpEvents: EventMap = {
 		},
 	},
 
+	// Kvaris LTUQ
+	[`Rampage of the Sunderer D.2`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `Rampage of the Sunderer D.2`,
+			jp: `星砕の猛進D.2`,
+		},
+	},
+
 	// Stia UQ
 	[`Nilus Vera Subjugation`]: {
 		type: EventType.STIA,

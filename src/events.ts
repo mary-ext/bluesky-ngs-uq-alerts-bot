@@ -207,6 +207,13 @@ export const glEvents: EventMap = {
 			jp: `協調型スターレス討伐戦`,
 		},
 	},
+	[`And the Stars Fell`]: {
+		type: EventType.STIA,
+		name: {
+			en: `And the Stars Fell`,
+			jp: `星蝕の奔流`,
+		},
+	},
 
 	// Stia LTUQ
 	[`Happy Rappy Rumble: Stia`]: {
@@ -407,6 +414,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `Simultaneous Starless Subjugation`,
 			jp: `協調型スターレス討伐戦`,
+		},
+	},
+	[`The Veil of Stars Descends`]: {
+		type: EventType.STIA,
+		name: {
+			en: `The Veil of Stars Descends`,
+			jp: `星蝕の奔流`,
 		},
 	},
 

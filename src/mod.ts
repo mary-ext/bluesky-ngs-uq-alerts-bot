@@ -124,7 +124,9 @@ if (notifySocket) {
 		const child = cmd.spawn();
 
 		child.status.then((status) => {
-			console.log(`ready status: ${status.code}`);
+			if (status.code !== 0) {
+				console.error(`ready signal failed: ${status.code}`);
+			}
 		});
 	}
 
@@ -143,7 +145,9 @@ if (notifySocket) {
 			const child = cmd.spawn();
 
 			child.status.then((status) => {
-				console.log(`watchdog status: ${status.code}`);
+				if (status.code !== 0) {
+					console.error(`watchdog signal failed: ${status.code}`);
+				}
 			});
 		}, interval);
 	}

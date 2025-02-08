@@ -108,3 +108,43 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 }
 
 console.log(`running`);
+
+// check if we have a notify socket from systemd
+const notifySocket = Deno.env.get('NOTIFY_SOCKET');
+if (notifySocket) {
+	const bin = '/usr/bin/systemd-notify';
+	const pid = Deno.pid;
+
+	// we'll just be using systemd-notify to do these signals
+	console.log(`systemd notify socket found: ${notifySocket}`);
+
+	// notify systemd that we're ready
+	{
+		const cmd = new Deno.Command(bin, { args: [`--pid=${pid}`, 'READY=1'] });
+		const child = cmd.spawn();
+
+		child.status.then((status) => {
+			console.log(`ready status: ${status.code}`);
+		});
+	}
+
+	// if we have a watchdog, we'll keep it alive
+	const watchdog = Deno.env.get('WATCHDOG_USEC');
+	if (watchdog) {
+		// convert to milliseconds
+		const timeout = parseInt(watchdog) / 1000;
+		const interval = timeout / 2;
+
+		console.log(`watchdog found: ${timeout}ms`);
+
+		const cmd = new Deno.Command(bin, { args: [`--pid=${pid}`, 'WATCHDOG=1'] });
+
+		setInterval(() => {
+			const child = cmd.spawn();
+
+			child.status.then((status) => {
+				console.log(`watchdog status: ${status.code}`);
+			});
+		}, interval);
+	}
+}

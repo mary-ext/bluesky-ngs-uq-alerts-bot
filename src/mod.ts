@@ -100,19 +100,22 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 		let lastRunSuccessful = false;
 
 		console.log(`[${id}]: scheduling`);
-		Deno.cron(id, schedule, async () => {
+		Deno.cron(id, schedule, { backoffSchedule: [] }, async () => {
 			const currentMinute = new Date().getMinutes();
 			const shouldRun = !lastRunSuccessful || currentMinute === 16 || currentMinute === 46;
 
 			if (!shouldRun) {
-				console.log(`[${id}]: skipping`);
 				return;
 			}
 
-			lastRunSuccessful = false;
+			try {
+				await run();
+				lastRunSuccessful = true;
+			} catch (err) {
+				lastRunSuccessful = false;
 
-			await run();
-			lastRunSuccessful = true;
+				console.error(`[${id}]: exception`, err);
+			}
 		});
 	}
 }

@@ -147,6 +147,13 @@ export const glEvents: EventMap = {
 			jp: `星滅の予兆D.2`,
 		},
 	},
+	[`Shadow of the Fallen Star`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Shadow of the Fallen Star`,
+			jp: `星落の暗影`,
+		},
+	},
 
 	// Kvaris UQ
 	[`Crocodylis Vera Suppression Op`]: {
@@ -345,6 +352,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `Harbinger of Extinction D.2`,
 			jp: `星滅の予兆D.2`,
+		},
+	},
+	[`Shadow of the Fallen Star`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Shadow of the Fallen Star`,
+			jp: `星落の暗影`,
 		},
 	},
 

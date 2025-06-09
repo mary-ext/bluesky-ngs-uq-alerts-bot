@@ -1,55 +1,81 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
-    "npm:@atcute/bluesky-richtext-builder@2": "2.0.0_@atcute+bluesky@2.0.0__@atcute+client@3.0.0_@atcute+client@3.0.0",
-    "npm:@atcute/bluesky-threading@4": "4.0.0_@atcute+bluesky@2.0.0__@atcute+client@3.0.0_@atcute+client@3.0.0",
-    "npm:@atcute/bluesky@2": "2.0.0_@atcute+client@3.0.0",
-    "npm:@atcute/client@3": "3.0.0"
+    "npm:@atcute/bluesky-richtext-builder@^2.0.3": "2.0.3",
+    "npm:@atcute/bluesky-threading@^5.0.3": "5.0.3",
+    "npm:@atcute/bluesky@^3.1.1": "3.1.1",
+    "npm:@atcute/client@^4.0.3": "4.0.3"
   },
   "npm": {
-    "@atcute/bluesky-richtext-builder@2.0.0_@atcute+bluesky@2.0.0__@atcute+client@3.0.0_@atcute+client@3.0.0": {
-      "integrity": "sha512-eWpwOaufN3XFfb5lsxPfSBih0vgACnNXY8cq3ekibRMPEXbcCrHw3EyJshs7kPJjyyXZ5JJ0I9cUZMIoFK8VIA==",
+    "@atcute/atproto@3.1.0": {
+      "integrity": "sha512-aJbDsY7FcIh8APWKAimBtshPwqoRE056tc0UV6vw4TW4e3nYaHedoJmKhlh/k8KQWxyw64MQThNGMaC89HNoTg==",
       "dependencies": [
-        "@atcute/bluesky",
-        "@atcute/client"
+        "@atcute/lexicons"
       ]
     },
-    "@atcute/bluesky-threading@4.0.0_@atcute+bluesky@2.0.0__@atcute+client@3.0.0_@atcute+client@3.0.0": {
-      "integrity": "sha512-1pYZsHifFf0BSwixhVqmXz7nZ8EDZsTVSPWHZfiV44za5L3uo2TQaI30dcMNDVAGP+ryw5rT0jnOv88BmrOfiw==",
+    "@atcute/bluesky-richtext-builder@2.0.3": {
+      "integrity": "sha512-FOd4At9etRfkfpun3PFBU1TjRurWNjjwkZZ9UcURxdzOg8H6NBZXk4Djdz0Q8VpbcqUxjDOycGHTJClOA8+OEw==",
       "dependencies": [
+        "@atcute/bluesky",
+        "@atcute/lexicons"
+      ]
+    },
+    "@atcute/bluesky-threading@5.0.3": {
+      "integrity": "sha512-WtKgWpDWYXpWInIWxzELT/rTPjPgwDc8k0Fy7r5t7kSaWj966DBRZSGm1vwWI/0Ly+mA0qDjzNPyQJ68KS3IYQ==",
+      "dependencies": [
+        "@atcute/atproto",
         "@atcute/bluesky",
         "@atcute/cbor",
         "@atcute/cid",
         "@atcute/client",
+        "@atcute/lexicons",
         "@atcute/tid"
       ]
     },
-    "@atcute/bluesky@2.0.0_@atcute+client@3.0.0": {
-      "integrity": "sha512-G54WP8ribfH7dojidp6LJjNISauZr2AN9VxRi3k5XTLnT3S5l59e8l48psxTTv+GzBnY8u2GIHMlehBXt7X69A==",
+    "@atcute/bluesky@3.1.1": {
+      "integrity": "sha512-CyUKfYnl6Uh5esmlr7D3gYV4cq94gA0BjbsOZI2RBpG+UxAlghs/kBPrJQQGZkuYHzuyelmQNS1gALuJjjfhVg==",
       "dependencies": [
-        "@atcute/client"
+        "@atcute/atproto",
+        "@atcute/lexicons"
       ]
     },
-    "@atcute/cbor@2.2.1": {
-      "integrity": "sha512-o+zCkfFQhRxpQmGYOAlRAK9xqq3VH66Mw0muUOlc+Wnk5X8CyZcIkdYorzYWTtyNO2/WHdMcUzZs93+Ajl6BbA==",
+    "@atcute/cbor@2.2.4": {
+      "integrity": "sha512-8Y/OTM8zs5VInOCjfx4f9Idiiz7ygM/FkfWv/HW3/ZUsXczn1xk7GzTBbm4P5crn4C5luwDGpO7FwClMOERrow==",
       "dependencies": [
         "@atcute/cid",
         "@atcute/multibase",
         "@atcute/uint8array"
       ]
     },
-    "@atcute/cid@2.2.1": {
-      "integrity": "sha512-tSsVdgx8jj+n6l+MP8IN8rZCR9N4ltJ8EPMiRzo6uduAAygYiZkCRceCOZ57IMtToZcSgm3nxYr4g1aeUbHUcw==",
+    "@atcute/cid@2.2.3": {
+      "integrity": "sha512-WEzNSL1EuCVtCQDFYEBIm4dEP6PcMEwi8IYUVIWvT77eO5EjY58F63z5T4qMABxSBM0+L4kqMxypdL1Fzf6LZw==",
       "dependencies": [
         "@atcute/multibase",
         "@atcute/uint8array"
       ]
     },
-    "@atcute/client@3.0.0": {
-      "integrity": "sha512-6OsDqqkrqob/fMJ++s5vPc2MknQ6yfTzK+TY3MjXK3ZOkF0XseB5+QV1IiBWnEZ4X3aY21x2a3kv3YcvSQKxXQ=="
+    "@atcute/client@4.0.3": {
+      "integrity": "sha512-RIOZWFVLca/HiPAAUDqQPOdOreCxTbL5cb+WUf5yqQOKIu5yEAP3eksinmlLmgIrlr5qVOE7brazUUzaskFCfw==",
+      "dependencies": [
+        "@atcute/identity",
+        "@atcute/lexicons"
+      ]
     },
-    "@atcute/multibase@1.1.3": {
-      "integrity": "sha512-vQQO0tDuQPguBvHdgV3ryn7R8U6beQ50KA/juYm+dCeT/3hOK2stMbX+IaW8JEuwkT5lJsU8wDIOicQT4mB7Ag==",
+    "@atcute/identity@1.0.2": {
+      "integrity": "sha512-SrDPHuEarEHj9bx7NfYn7DYG6kIgJIMRU581iOCIaVaiZ1WhE9D8QxTxeYG/rbGNSa85E891ECp1sQcKiBN0kg==",
+      "dependencies": [
+        "@atcute/lexicons",
+        "@badrap/valita"
+      ]
+    },
+    "@atcute/lexicons@1.0.4": {
+      "integrity": "sha512-VyGJuGKAIeE+71UT9aSMJJdvfxfXsdsGMG9acv9rnGT7enVy4TD5XoYQy7TCHZ4YpxXzuHkqjyAqBz95c4WkRg==",
+      "dependencies": [
+        "esm-env"
+      ]
+    },
+    "@atcute/multibase@1.1.4": {
+      "integrity": "sha512-NUf5AeeSOmuZHGU+4GAaMtISJoG+ZHtW/vUVA4lK/YDt/7LODAW0Fd0NNIIUPVUoW0xJS6zSEIWvwLLuxmEHhA==",
       "dependencies": [
         "@atcute/uint8array"
       ]
@@ -57,16 +83,22 @@
     "@atcute/tid@1.0.2": {
       "integrity": "sha512-ahmjroNyeDPJhtuf3+HTJropaH04HmJ8fhntDu73Gpz/RkAF7+nkz6kcP2QTgfvMCgMPAJUdskAAP82GPDTY9w=="
     },
-    "@atcute/uint8array@1.0.1": {
-      "integrity": "sha512-AAnlFKyfDRgb9GNZJbhQ6OuMhbmNPirQyapb8KnmcEhxQZ3+tt+4NcwqekEegY4MpNqSTYeeTdyxq0wGZv1JHg=="
+    "@atcute/uint8array@1.0.3": {
+      "integrity": "sha512-M/K+ihiVW8Pl2PFLzaC4E3l4JaZ1IH05Q0AbPWUC4cVHnd/gZ/1kAF5ngdtGvJeDMirHZ2VAy7OmAsPwR/2nlA=="
+    },
+    "@badrap/valita@0.4.5": {
+      "integrity": "sha512-4QwGbuhh/JesHRQj79mO/l37PvJj4l/tlAu7+S1n4h47qwaNpZ0WDvIwUGLYUsdi9uQ5UPpiG9wb1Wm3XUFBUQ=="
+    },
+    "esm-env@1.2.2": {
+      "integrity": "sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA=="
     }
   },
   "workspace": {
     "dependencies": [
-      "npm:@atcute/bluesky-richtext-builder@2",
-      "npm:@atcute/bluesky-threading@4",
-      "npm:@atcute/bluesky@2",
-      "npm:@atcute/client@3"
+      "npm:@atcute/bluesky-richtext-builder@^2.0.3",
+      "npm:@atcute/bluesky-threading@^5.0.3",
+      "npm:@atcute/bluesky@^3.1.1",
+      "npm:@atcute/client@^4.0.3"
     ]
   }
 }

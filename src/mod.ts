@@ -1,4 +1,4 @@
-import { CredentialManager, XRPC, XRPCError } from '@atcute/client';
+import { Client, ClientResponseError, CredentialManager } from '@atcute/client';
 
 import { publishThread } from '@atcute/bluesky-threading';
 
@@ -59,7 +59,7 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 			},
 		});
 
-		const rpc = new XRPC({ handler: auth });
+		const rpc = new Client({ handler: auth });
 
 		try {
 			const rawSession = Deno.readTextFileSync(sessionFileUrl);
@@ -77,7 +77,7 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 				console.log(`[${id}]: no session file found, creating new session`);
 			} else if (err instanceof Deno.errors.InvalidData) {
 				console.log(`[${id}]: session file is invalid, creating new session`);
-			} else if (err instanceof XRPCError && err.kind === 'ExpiredToken') {
+			} else if (err instanceof ClientResponseError && err.error === 'ExpiredToken') {
 				console.log(`[${id}]: session expired, creating new session`);
 			} else {
 				throw err;

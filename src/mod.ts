@@ -14,6 +14,7 @@ for (const { id, scrapeUrl, mappings, account, buildPosts } of configs) {
 
 		const response = await fetch(scrapeUrl, {
 			signal: AbortSignal.timeout(30_000),
+			cache: 'no-cache',
 			headers: {
 				'user-agent': 'codeberg:mary-ext/bluesky-ngs-uq-alerts',
 			},

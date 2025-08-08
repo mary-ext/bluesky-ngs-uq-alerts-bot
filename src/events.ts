@@ -230,6 +230,13 @@ export const glEvents: EventMap = {
 			jp: `ハッピーラッピー大作戦：スティア`,
 		},
 	},
+	[`And the Stars Fell D.2`]: {
+		type: EventType.STIA,
+		name: {
+			en: `And the Stars Fell D.2`,
+			jp: `星蝕の奔流D.2`,
+		},
+	},
 };
 
 export const jpEvents: EventMap = {
@@ -444,6 +451,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `Happy Rappy Rumble: Stia`,
 			jp: `ハッピーラッピー大作戦：スティア`,
+		},
+	},
+	[`The Veil of Stars Descends D.2`]: {
+		type: EventType.STIA,
+		name: {
+			en: `The Veil of Stars Descends D.2`,
+			jp: `星蝕の奔流D.2`,
 		},
 	},
 };

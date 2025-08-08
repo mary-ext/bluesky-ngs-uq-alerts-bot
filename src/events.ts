@@ -34,6 +34,13 @@ export const glEvents: EventMap = {
 			jp: `ステージライブ`,
 		},
 	},
+	[`Our Fighting!/Eternal Encore`]: {
+		type: EventType.SPECIAL,
+		name: {
+			en: `Live Concert: Our Fighting! / Eternal Encore`,
+			jp: `ステージライブ: Our Fighting! / 永遠のencore`,
+		},
+	},
 
 	// Aelio UQ
 	[`Nex Vera Suppression Op`]: {

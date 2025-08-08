@@ -37,8 +37,8 @@ export const glEvents: EventMap = {
 	[`Our Fighting!/Eternal Encore`]: {
 		type: EventType.SPECIAL,
 		name: {
-			en: `Live Concert: Our Fighting! / Eternal Encore`,
-			jp: `ステージライブ: Our Fighting! / 永遠のencore`,
+			en: `Movie Concert: Our Fighting! / Eternal Encore`,
+			jp: `ムービーライブ: Our Fighting! / 永遠のencore`,
 		},
 	},
 

@@ -37,8 +37,29 @@ export const glEvents: EventMap = {
 	[`Our Fighting!/Eternal Encore`]: {
 		type: EventType.SPECIAL,
 		name: {
-			en: `Movie Concert: Our Fighting! / Eternal Encore`,
-			jp: `ムービーライブ: Our Fighting! / 永遠のencore`,
+			en: `Movie Concert: Our Fighting / Eternal Encore`,
+			jp: `ムービーライブ: Our Fighting / 永遠のencore`,
+		},
+	},
+	[`We're Arks/Rare Drop☆KOI☆KOI`]: {
+		type: EventType.SPECIAL,
+		name: {
+			en: `Movie Concert: We're ARKS! / Rare Drop☆KOI☆KOI`,
+			jp: `ムービーライブ: We're ARKS! / レアドロ☆KOI☆こい`,
+		},
+	},
+	[`Endless Story/Our Fighting ver. MIYABI`]: {
+		type: EventType.SPECIAL,
+		name: {
+			en: `Movie Concert: Endless Story / Our Fighting ver.MIYABI`,
+			jp: `ムービーライブ: 終わりなき物語 / Our Fighting ver.MIYABI`,
+		},
+	},
+	[`Cosmic Twinkle Star/The End of the Light`]: {
+		type: EventType.SPECIAL,
+		name: {
+			en: `Movie Concert: Cosmic twinkle star / The End of the Light`,
+			jp: `ムービーライブ: Cosmic twinkle star / 光の果て`,
 		},
 	},
 
@@ -99,6 +120,13 @@ export const glEvents: EventMap = {
 		name: {
 			en: `The Second Battle of Halphia Lake`,
 			jp: `第二次ハルフィリア湖要撃戦`,
+		},
+	},
+	[`Resonant Twin Shadows Shake the Wetlands`]: {
+		type: EventType.AELIO,
+		name: {
+			en: `Resonant Twin Shadows Shake the Wetlands`,
+			jp: `湿原揺るがす共鳴の双影`,
 		},
 	},
 
@@ -313,6 +341,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `The Second Battle of Lake Halphiria`,
 			jp: `第二次ハルフィリア湖要撃戦`,
+		},
+	},
+	[`Resonant Twin Shadows Shake the Wetlands`]: {
+		type: EventType.AELIO,
+		name: {
+			en: `Resonant Twin Shadows Shake the Wetlands`,
+			jp: `湿原揺るがす共鳴の双影`,
 		},
 	},
 

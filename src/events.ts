@@ -343,10 +343,10 @@ export const jpEvents: EventMap = {
 			jp: `第二次ハルフィリア湖要撃戦`,
 		},
 	},
-	[`Resonant Twin Shadows Shake the Wetlands`]: {
+	[`The Umbral-Dyad Quivering Resonance of the Marshlands`]: {
 		type: EventType.AELIO,
 		name: {
-			en: `Resonant Twin Shadows Shake the Wetlands`,
+			en: `The Umbral-Dyad Quivering Resonance of the Marshlands`,
 			jp: `湿原揺るがす共鳴の双影`,
 		},
 	},

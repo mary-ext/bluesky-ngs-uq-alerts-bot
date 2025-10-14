@@ -227,6 +227,22 @@ export const glEvents: EventMap = {
 		},
 	},
 
+	// Kvaris LTUQ
+	[`Planetcrusher Assault D.2`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `Planetcrusher Assault`,
+			jp: `星砕の猛進D.2`,
+		},
+	},
+	[`Pale Flame of the Planetwrecker`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `Pale Flame of the Planetwrecker`,
+			jp: `星壊の白焔`,
+		},
+	},
+
 	// Stia UQ
 	[`Nils Vera Suppression Op`]: {
 		type: EventType.STIA,
@@ -454,6 +470,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `Rampage of the Sunderer D.2`,
 			jp: `星砕の猛進D.2`,
+		},
+	},
+	[`The White Flame of the Star Breaker`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `The White Flame of the Star Breaker`,
+			jp: `星壊の白焔`,
 		},
 	},
 

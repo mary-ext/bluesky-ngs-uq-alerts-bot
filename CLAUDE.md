@@ -1,7 +1,8 @@
 a Cloudflare Worker that scrapes PSO2 NGS urgent quest schedules and posts alerts to Bluesky.
 
-this is a rewrite of [bluesky-ngs-uq-alerts-bot](https://github.com/mary-ext/bluesky-ngs-uq-alerts-bot),
-migrating from Deno to Cloudflare Workers for better reliability and scheduling.
+this is a rewrite of
+[bluesky-ngs-uq-alerts-bot](https://github.com/mary-ext/bluesky-ngs-uq-alerts-bot), migrating from
+Deno to Cloudflare Workers for better reliability and scheduling.
 
 ## development notes
 

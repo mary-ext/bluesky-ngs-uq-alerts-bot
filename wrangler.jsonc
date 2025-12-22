@@ -20,11 +20,9 @@
 		},
 	],
 	"vars": {
-		"BLUESKY_JP_PDS": "",
-		"BLUESKY_JP_IDENTIFIER": "",
-		"BLUESKY_JP_PASSWORD": "",
-		"BLUESKY_GL_PDS": "",
-		"BLUESKY_GL_IDENTIFIER": "",
-		"BLUESKY_GL_PASSWORD": "",
+		"BLUESKY_JP_PDS": "https://bsky.social",
+		"BLUESKY_JP_IDENTIFIER": "did:plc:fq4cqjaex6ubtaqxe65p66gw",
+		"BLUESKY_GL_PDS": "https://bsky.social",
+		"BLUESKY_GL_IDENTIFIER": "did:plc:nvo4hcnaw4pggica7tyln5tc",
 	},
 }

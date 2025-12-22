@@ -217,6 +217,13 @@ export const glEvents: EventMap = {
 			jp: `星壊の白焔`,
 		},
 	},
+	[`Luther, Emergent Created Conqueror`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `Luther, Emergent Created Conqueror`,
+			jp: `現れる創られし覇者【敗者】`,
+		},
+	},
 
 	// Stia UQ
 	[`Nils Vera Suppression Op`]: {
@@ -452,6 +459,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `The White Flame of the Star Breaker`,
 			jp: `星壊の白焔`,
+		},
+	},
+	[`Luther, Emergent Created Conqueror`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `Luther, Emergent Created Conqueror`,
+			jp: `現れる創られし覇者【敗者】`,
 		},
 	},
 

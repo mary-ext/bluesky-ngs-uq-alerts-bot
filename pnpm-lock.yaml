@@ -6,6 +6,22 @@ settings:
 
 importers:
   .:
+    dependencies:
+      '@atcute/bluesky':
+        specifier: ^3.1.1
+        version: 3.2.14
+      '@atcute/bluesky-richtext-builder':
+        specifier: ^2.0.3
+        version: 2.0.4
+      '@atcute/bluesky-threading':
+        specifier: ^5.0.3
+        version: 5.0.5
+      '@atcute/client':
+        specifier: ^4.0.3
+        version: 4.1.1
+      '@atcute/lexicons':
+        specifier: ^1.2.5
+        version: 1.2.5
     devDependencies:
       '@prettier/plugin-oxc':
         specifier: ^0.1.3
@@ -24,6 +40,85 @@ importers:
         version: 4.56.0
 
 packages:
+  '@atcute/atproto@3.1.9':
+    resolution:
+      {
+        integrity: sha512-DyWwHCTdR4hY2BPNbLXgVmm7lI+fceOwWbE4LXbGvbvVtSn+ejSVFaAv01Ra3kWDha0whsOmbJL8JP0QPpf1+w==,
+      }
+
+  '@atcute/bluesky-richtext-builder@2.0.4':
+    resolution:
+      {
+        integrity: sha512-ydA9VWBPsBE/gbu1vYbmh7AZ8FLfxp+LE4eH5GgOTCOxwhs7Mgy1oHrHY+Er6gu6PfdoUoGso0uI3Wl3ZF/Mxg==,
+      }
+
+  '@atcute/bluesky-threading@5.0.5':
+    resolution:
+      {
+        integrity: sha512-I2jCY9RDSegCzdtfa7asHEfJbfkz7dK/et3GBV3ckpyYOQV46ydvjwzrqHagfypXBGZmY/DKZNzk8DibTwISLw==,
+      }
+
+  '@atcute/bluesky@3.2.14':
+    resolution:
+      {
+        integrity: sha512-XlVuF55AYIyplmKvlGLlj+cUvk9ggxNRPczkTPIY991xJ4qDxDHpBJ39ekAV4dWcuBoRo2o9JynzpafPu2ljDA==,
+      }
+
+  '@atcute/cbor@2.2.8':
+    resolution:
+      {
+        integrity: sha512-UzOAN9BuN6JCXgn0ryV8qZuRJUDrNqrbLd6EFM8jc6RYssjRyGRxNy6RZ1NU/07Hd8Tq/0pz8+nQiMu5Zai5uw==,
+      }
+
+  '@atcute/cid@2.2.6':
+    resolution:
+      {
+        integrity: sha512-bTAHHbJ24p+E//V4KCS4xdmd39o211jJswvqQOevj7vk+5IYcgDLx1ryZWZ1sEPOo9x875li/kj5gpKL14RDwQ==,
+      }
+
+  '@atcute/client@4.1.1':
+    resolution:
+      {
+        integrity: sha512-FROCbTTCeL5u4tO/n72jDEKyKqjdlXMB56Ehve3W/gnnLGCYWvN42sS7tvL1Mgu6sbO3yZwsXKDrmM2No4XpjA==,
+      }
+
+  '@atcute/identity@1.1.3':
+    resolution:
+      {
+        integrity: sha512-oIqPoI8TwWeQxvcLmFEZLdN2XdWcaLVtlm8pNk0E72As9HNzzD9pwKPrLr3rmTLRIoULPPFmq9iFNsTeCIU9ng==,
+      }
+
+  '@atcute/lexicons@1.2.5':
+    resolution:
+      {
+        integrity: sha512-9yO9WdgxW8jZ7SbzUycH710z+JmsQ9W9n5S6i6eghYju32kkluFmgBeS47r8e8p2+Dv4DemS7o/3SUGsX9FR5Q==,
+      }
+
+  '@atcute/multibase@1.1.6':
+    resolution:
+      {
+        integrity: sha512-HBxuCgYLKPPxETV0Rot4VP9e24vKl8JdzGCZOVsDaOXJgbRZoRIF67Lp0H/OgnJeH/Xpva8Z5ReoTNJE5dn3kg==,
+      }
+
+  '@atcute/tid@1.0.3':
+    resolution:
+      {
+        integrity: sha512-wfMJx1IMdnu0CZgWl0uR4JO2s6PGT1YPhpytD4ZHzEYKKQVuqV6Eb/7vieaVo1eYNMp2FrY67FZObeR7utRl2w==,
+      }
+
+  '@atcute/uint8array@1.0.6':
+    resolution:
+      {
+        integrity: sha512-ucfRBQc7BFT8n9eCyGOzDHEMKF/nZwhS2pPao4Xtab1ML3HdFYcX2DM1tadCzas85QTGxHe5urnUAAcNKGRi9A==,
+      }
+
+  '@badrap/valita@0.4.6':
+    resolution:
+      {
+        integrity: sha512-4kdqcjyxo/8RQ8ayjms47HCWZIF5981oE5nIenbfThKDxWXtEHKipAOWlflpPJzZx9y/JWYQkp18Awr7VuepFg==,
+      }
+    engines: { node: '>= 18' }
+
   '@cloudflare/kv-asset-handler@0.4.1':
     resolution:
       {
@@ -776,6 +871,12 @@ packages:
         integrity: sha512-uilwrK0Ygyri5dToHYdZSjcvpS2ZwX0w5aSt3GCEN9hrjxWCoeV4Z2DTXuxjwbntaLQIEEAlCeNQss5SoHvAEA==,
       }
 
+  '@standard-schema/spec@1.1.0':
+    resolution:
+      {
+        integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==,
+      }
+
   '@tybys/wasm-util@0.10.1':
     resolution:
       {
@@ -856,6 +957,12 @@ packages:
       }
     engines: { node: '>=18' }
     hasBin: true
+
+  esm-env@1.2.2:
+    resolution:
+      {
+        integrity: sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA==,
+      }
 
   exit-hook@2.2.1:
     resolution:
@@ -1064,6 +1171,66 @@ packages:
       }
 
 snapshots:
+  '@atcute/atproto@3.1.9':
+    dependencies:
+      '@atcute/lexicons': 1.2.5
+
+  '@atcute/bluesky-richtext-builder@2.0.4':
+    dependencies:
+      '@atcute/bluesky': 3.2.14
+      '@atcute/lexicons': 1.2.5
+
+  '@atcute/bluesky-threading@5.0.5':
+    dependencies:
+      '@atcute/atproto': 3.1.9
+      '@atcute/bluesky': 3.2.14
+      '@atcute/cbor': 2.2.8
+      '@atcute/cid': 2.2.6
+      '@atcute/client': 4.1.1
+      '@atcute/lexicons': 1.2.5
+      '@atcute/tid': 1.0.3
+
+  '@atcute/bluesky@3.2.14':
+    dependencies:
+      '@atcute/atproto': 3.1.9
+      '@atcute/lexicons': 1.2.5
+
+  '@atcute/cbor@2.2.8':
+    dependencies:
+      '@atcute/cid': 2.2.6
+      '@atcute/multibase': 1.1.6
+      '@atcute/uint8array': 1.0.6
+
+  '@atcute/cid@2.2.6':
+    dependencies:
+      '@atcute/multibase': 1.1.6
+      '@atcute/uint8array': 1.0.6
+
+  '@atcute/client@4.1.1':
+    dependencies:
+      '@atcute/identity': 1.1.3
+      '@atcute/lexicons': 1.2.5
+
+  '@atcute/identity@1.1.3':
+    dependencies:
+      '@atcute/lexicons': 1.2.5
+      '@badrap/valita': 0.4.6
+
+  '@atcute/lexicons@1.2.5':
+    dependencies:
+      '@standard-schema/spec': 1.1.0
+      esm-env: 1.2.2
+
+  '@atcute/multibase@1.1.6':
+    dependencies:
+      '@atcute/uint8array': 1.0.6
+
+  '@atcute/tid@1.0.3': {}
+
+  '@atcute/uint8array@1.0.6': {}
+
+  '@badrap/valita@0.4.6': {}
+
   '@cloudflare/kv-asset-handler@0.4.1':
     dependencies:
       mime: 3.0.0
@@ -1371,6 +1538,8 @@ snapshots:
 
   '@speed-highlight/core@1.2.12': {}
 
+  '@standard-schema/spec@1.1.0': {}
+
   '@tybys/wasm-util@0.10.1':
     dependencies:
       tslib: 2.8.1
@@ -1432,6 +1601,8 @@ snapshots:
       '@esbuild/win32-arm64': 0.27.0
       '@esbuild/win32-ia32': 0.27.0
       '@esbuild/win32-x64': 0.27.0
+
+  esm-env@1.2.2: {}
 
   exit-hook@2.2.1: {}
 

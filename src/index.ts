@@ -1,42 +1,134 @@
-/**
- * Welcome to Cloudflare Workers!
- *
- * This is a template for a Scheduled Worker: a Worker that can run on a
- * configurable interval:
- * https://developers.cloudflare.com/workers/platform/triggers/cron-triggers/
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Run `curl "http://localhost:8787/__scheduled?cron=*+*+*+*+*"` to see your Worker in action
- * - Run `npm run deploy` to publish your Worker
- *
- * Bind resources to your Worker in `wrangler.jsonc`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import { glEvents, jpEvents } from './events';
+import { fetchEvents } from './scraper';
+import { buildGlPosts, buildJpPosts, type Region } from './posts';
+import { createBlueskyClient, publishPosts, type BlueskyCredentials } from './bluesky';
+
+interface RegionConfig {
+	region: Region;
+	scrapeUrl: string;
+	eventMap: typeof glEvents;
+	buildPosts: typeof buildGlPosts;
+}
+
+const REGIONS: RegionConfig[] = [
+	{
+		region: 'jp',
+		scrapeUrl: 'https://acf.me.uk/Projects/PSO2-API/eq_viewer.php?api=JPNN&offset=9&format=H',
+		eventMap: jpEvents,
+		buildPosts: buildJpPosts,
+	},
+	{
+		region: 'gl',
+		scrapeUrl: 'https://acf.me.uk/Projects/PSO2-API/eq_viewer.php?api=GLBN&offset=0&format=H',
+		eventMap: glEvents,
+		buildPosts: buildGlPosts,
+	},
+];
+
+// minutes that should always run (first attempt of each 30-min window)
+const PRIMARY_MINUTES = new Set([16, 46]);
+
+async function runForRegion(
+	config: RegionConfig,
+	credentials: BlueskyCredentials,
+	kv: KVNamespace,
+	currentMinute: number,
+): Promise<void> {
+	const { region, scrapeUrl, eventMap, buildPosts } = config;
+	const stateKey = `state:${region}`;
+
+	// check if we should run based on last success state
+	const lastSuccess = await kv.get(stateKey);
+	const isPrimaryMinute = PRIMARY_MINUTES.has(currentMinute);
+
+	// only run on non-primary minutes if the last run failed
+	if (!isPrimaryMinute && lastSuccess === 'ok') {
+		console.log(`[${region}]: skipping (last run successful)`);
+		return;
+	}
+
+	console.log(`[${region}]: scraping the page`);
+
+	const events = await fetchEvents(scrapeUrl, eventMap);
+	console.log(`[${region}]: got ${events.length} events`);
+
+	const posts = buildPosts(events);
+	console.log(`[${region}]: got ${posts.length} posts`);
+
+	if (posts.length === 0) {
+		console.log(`[${region}]: no posts to publish, skipping`);
+		await kv.put(stateKey, 'ok');
+		return;
+	}
+
+	const { rpc, did, handle } = await createBlueskyClient({ region, credentials, kv });
+	console.log(`[${region}]: signed in as @${handle}`);
+
+	await publishPosts(rpc, did, posts);
+	console.log(`[${region}]: posts published`);
+
+	// mark as successful
+	await kv.put(stateKey, 'ok');
+}
 
 export default {
-	async fetch(req) {
+	async fetch(req: Request): Promise<Response> {
 		const url = new URL(req.url);
 		url.pathname = '/__scheduled';
-		url.searchParams.append('cron', '* * * * *');
+		url.searchParams.set('cron', '16,18,20,22,25,46,48,50,52,55 * * * *');
+
 		return new Response(
-			`To test the scheduled handler, ensure you have used the "--test-scheduled" then try running "curl ${url.href}".`,
+			`PSO2 NGS UQ Alerts Bot\n\nTo test the scheduled handler, ensure you have used "--test-scheduled" then try running:\ncurl "${url.href}"`,
 		);
 	},
 
-	// The scheduled handler is invoked at the interval set in our wrangler.jsonc's
-	// [[triggers]] configuration.
-	async scheduled(event, _env, _ctx): Promise<void> {
-		// A Cron Trigger can make requests to other endpoints on the Internet,
-		// publish to a Queue, query a D1 Database, and much more.
-		//
-		// We'll keep it simple and make an API call to a Cloudflare API:
-		let resp = await fetch('https://api.cloudflare.com/client/v4/ips');
-		let wasSuccessful = resp.ok ? 'success' : 'fail';
+	async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+		const currentMinute = new Date().getMinutes();
+		console.log(`cron triggered at minute ${currentMinute}`);
 
-		// You could store this result in KV, write to a D1 Database, or publish to a Queue.
-		// In this template, we'll just log the result:
-		console.log(`trigger fired at ${event.cron}: ${wasSuccessful}`);
+		const tasks = REGIONS.map(async (config) => {
+			const credentials = getCredentials(env, config.region);
+
+			if (!credentials) {
+				console.log(`[${config.region}]: missing credentials, skipping`);
+				return;
+			}
+
+			try {
+				await runForRegion(config, credentials, env.KV, currentMinute);
+			} catch (err) {
+				console.error(`[${config.region}]: exception`, err);
+
+				// mark as failed so we retry on next run
+				await env.KV.put(`state:${config.region}`, 'failed');
+			}
+		});
+
+		// use waitUntil to ensure all tasks complete even if one fails
+		ctx.waitUntil(Promise.all(tasks));
 	},
 } satisfies ExportedHandler<Env>;
+
+function getCredentials(env: Env, region: Region): BlueskyCredentials | undefined {
+	if (region === 'jp') {
+		if (!env.BLUESKY_JP_PDS || !env.BLUESKY_JP_IDENTIFIER || !env.BLUESKY_JP_PASSWORD) {
+			return undefined;
+		}
+
+		return {
+			pds: env.BLUESKY_JP_PDS,
+			identifier: env.BLUESKY_JP_IDENTIFIER,
+			password: env.BLUESKY_JP_PASSWORD,
+		};
+	} else {
+		if (!env.BLUESKY_GL_PDS || !env.BLUESKY_GL_IDENTIFIER || !env.BLUESKY_GL_PASSWORD) {
+			return undefined;
+		}
+
+		return {
+			pds: env.BLUESKY_GL_PDS,
+			identifier: env.BLUESKY_GL_IDENTIFIER,
+			password: env.BLUESKY_GL_PASSWORD,
+		};
+	}
+}

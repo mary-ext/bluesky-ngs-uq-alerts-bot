@@ -1,0 +1,29 @@
+{
+	"$schema": "https://unpkg.com/oxlint/configuration_schema.json",
+	"options": {
+		"typeAware": true,
+		"typeCheck": true
+	},
+	"categories": {
+		"correctness": "warn",
+		"suspicious": "warn",
+		"perf": "warn"
+	},
+	"rules": {
+		"curly": "warn",
+		"no-control-regex": "off",
+		"unicorn/switch-case-braces": ["warn", "always"]
+	},
+	"overrides": [
+		{
+			"files": ["*.test.ts"],
+			"rules": {
+				"typescript/no-floating-promises": "off",
+				"no-await-in-loop": "off",
+				"typescript/await-thenable": "off",
+				"unicorn/consistent-function-scoping": "off",
+				"typescript/no-unsafe-type-assertion": "off"
+			}
+		}
+	]
+}

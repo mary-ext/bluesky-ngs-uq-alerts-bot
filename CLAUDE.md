@@ -10,6 +10,9 @@ accounts for JP and global regions. uses the atcute library for Bluesky API inte
   - `pnpm dev` to start local dev server with scheduled handler testing
   - `pnpm deploy` to deploy to Cloudflare Workers
   - `pnpm cf-typegen` to regenerate worker-configuration.d.ts
+- format with `pnpm run fmt` (oxfmt)
+- lint and typecheck with `pnpm run lint` (oxlint)
+- check `pnpm view <package>` before adding a new dependency
 
 ### code writing
 

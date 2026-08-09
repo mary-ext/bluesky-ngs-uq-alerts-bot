@@ -1,7 +1,7 @@
-import { glEvents, jpEvents } from './events';
-import { fetchEvents } from './scraper';
-import { buildGlPosts, buildJpPosts, type Region } from './posts';
 import { createBlueskyClient, publishPosts, type BlueskyCredentials } from './bluesky';
+import { glEvents, jpEvents } from './events';
+import { buildGlPosts, buildJpPosts, type Region } from './posts';
+import { fetchEvents } from './scraper';
 
 interface RegionConfig {
 	region: Region;

@@ -4,8 +4,8 @@ export function scrape(source: string, eventMap: EventMap): TimedEvent[] {
 	const matches = Array.from(
 		source.matchAll(/>([0-9:]{5})[^]+?>([^]+?)</g),
 		({ 1: time, 2: raw }): TimedEvent => ({
-			time: time!,
-			event: raw! in eventMap ? eventMap[raw!] : { type: EventType.UNKNOWN, raw: raw! },
+			time,
+			event: raw in eventMap ? eventMap[raw] : { type: EventType.UNKNOWN, raw },
 		}),
 	);
 

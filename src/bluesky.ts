@@ -1,6 +1,6 @@
-import { Client, ClientResponseError, CredentialManager, type AtpSessionData } from '@atcute/client';
 import type { ComposedPost } from '@atcute/bluesky-threading';
 import { publishThread } from '@atcute/bluesky-threading';
+import { Client, ClientResponseError, CredentialManager, type AtpSessionData } from '@atcute/client';
 import type { Did } from '@atcute/lexicons';
 
 import type { Region } from './posts';
@@ -17,9 +17,7 @@ export interface BlueskyClientOptions {
 	kv: KVNamespace;
 }
 
-/**
- * creates a bluesky client with session persistence via KV
- */
+/** creates a bluesky client with session persistence via KV */
 export async function createBlueskyClient(options: BlueskyClientOptions): Promise<{
 	rpc: Client;
 	did: Did;
@@ -32,11 +30,11 @@ export async function createBlueskyClient(options: BlueskyClientOptions): Promis
 		service: credentials.pds,
 		onSessionUpdate(session) {
 			// persist session to KV (fire and forget)
-			kv.put(sessionKey, JSON.stringify(session));
+			void kv.put(sessionKey, JSON.stringify(session));
 		},
 		onExpired() {
 			// delete expired session from KV (fire and forget)
-			kv.delete(sessionKey);
+			void kv.delete(sessionKey);
 		},
 	});
 
@@ -83,9 +81,7 @@ export async function createBlueskyClient(options: BlueskyClientOptions): Promis
 	};
 }
 
-/**
- * publishes posts to bluesky as a thread
- */
+/** publishes posts to bluesky as a thread */
 export async function publishPosts(rpc: Client, did: Did, posts: ComposedPost[]): Promise<void> {
 	await publishThread(rpc, { author: did, posts });
 }

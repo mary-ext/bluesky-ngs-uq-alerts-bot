@@ -1,5 +1,5 @@
-import type { ComposedPost } from '@atcute/bluesky-threading';
 import RichtextBuilder from '@atcute/bluesky-richtext-builder';
+import type { ComposedPost } from '@atcute/bluesky-threading';
 
 import { EventType, type TimedEvent } from './types';
 

@@ -224,6 +224,13 @@ export const glEvents: EventMap = {
 			jp: `現れる創られし覇者【敗者】`,
 		},
 	},
+	[`Luther, The Emergent Created Conqueror D.2`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `Luther, The Emergent Created Conqueror D.2`,
+			jp: `現れる創られし覇者【敗者】D.2`,
+		},
+	},
 
 	// Stia UQ
 	[`Nils Vera Suppression Op`]: {
@@ -464,7 +471,7 @@ export const jpEvents: EventMap = {
 	[`Luther, Emergent Created Conqueror`]: {
 		type: EventType.KVARIS,
 		name: {
-			en: `Luther, Emergent Created Conqueror`,
+			en: `Paragon of Creation: [Loser]`,
 			jp: `現れる創られし覇者【敗者】`,
 		},
 	},

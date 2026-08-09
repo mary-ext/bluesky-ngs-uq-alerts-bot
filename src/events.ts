@@ -468,6 +468,13 @@ export const jpEvents: EventMap = {
 			jp: `現れる創られし覇者【敗者】`,
 		},
 	},
+	[`Paragon of Creation: [Loser] D.2`]: {
+		type: EventType.KVARIS,
+		name: {
+			en: `Paragon of Creation: [Loser] D.2`,
+			jp: `現れる創られし覇者【敗者】D.2`,
+		},
+	},
 
 	// Stia UQ
 	[`Nilus Vera Subjugation`]: {

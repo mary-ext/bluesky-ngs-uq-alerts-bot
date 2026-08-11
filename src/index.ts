@@ -52,6 +52,12 @@ async function runForRegion(
 	const events = await fetchEvents(scrapeUrl, eventMap);
 	console.log(`[${region}]: got ${events.length} events`);
 
+	if (events.length === 0) {
+		console.warn(`[${region}]: no events reported yet, retrying on the next run`);
+		await kv.put(stateKey, 'pending');
+		return;
+	}
+
 	const posts = buildPosts(events);
 	console.log(`[${region}]: got ${posts.length} posts`);
 
@@ -97,7 +103,7 @@ export default {
 			try {
 				await runForRegion(config, credentials, env.KV, currentMinute);
 			} catch (err) {
-				console.error(`[${config.region}]: exception`, err);
+				console.error(`[${config.region}]: exception: ${describeError(err)}`, err);
 
 				// mark as failed so we retry on next run
 				await env.KV.put(`state:${config.region}`, 'failed');
@@ -108,6 +114,15 @@ export default {
 		ctx.waitUntil(Promise.all(tasks));
 	},
 } satisfies ExportedHandler<Env>;
+
+const describeError = (err: unknown): string => {
+	if (err instanceof Error) {
+		const cause = err.cause !== undefined ? ` (cause: ${describeError(err.cause)})` : ``;
+		return `${err.name}: ${err.message}${cause}`;
+	}
+
+	return String(err);
+};
 
 function getCredentials(env: Env, region: Region): BlueskyCredentials | undefined {
 	if (region === 'jp') {

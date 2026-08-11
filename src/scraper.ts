@@ -27,11 +27,5 @@ export async function fetchEvents(scrapeUrl: string, eventMap: EventMap): Promis
 	}
 
 	const source = await response.text();
-	const events = scrape(source, eventMap);
-
-	if (events.length === 0) {
-		throw new Error(`empty response`);
-	}
-
-	return events;
+	return scrape(source, eventMap);
 }

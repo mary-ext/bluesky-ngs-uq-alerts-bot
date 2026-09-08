@@ -164,6 +164,13 @@ export const glEvents: EventMap = {
 			jp: `星落の暗影`,
 		},
 	},
+	[`Moonlight Harvest`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Moonlight Harvest`,
+			jp: `月下のハーヴェスト`,
+		},
+	},
 
 	// Kvaris UQ
 	[`Crocodylis Vera Suppression Op`]: {
@@ -413,6 +420,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `Shadow of the Fallen Star`,
 			jp: `星落の暗影`,
+		},
+	},
+	[`Moonlit Harvest`]: {
+		type: EventType.RETEM,
+		name: {
+			en: `Moonlit Harvest`,
+			jp: `月下のハーヴェスト`,
 		},
 	},
 

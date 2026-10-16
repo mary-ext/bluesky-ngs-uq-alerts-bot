@@ -36,6 +36,7 @@
 
 		/* Skip type checking all .d.ts files. */
 		"skipLibCheck": true,
-		"types": ["./worker-configuration.d.ts"]
-	}
+		"types": []
+	},
+	"include": ["src", "cloudflare.config.ts", ".cloudflare/types"]
 }

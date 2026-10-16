@@ -4,10 +4,11 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"deploy": "wrangler deploy",
-		"dev": "wrangler dev --test-scheduled",
-		"start": "wrangler dev --test-scheduled",
-		"cf-typegen": "wrangler types",
+		"build": "cf build",
+		"deploy": "cf deploy",
+		"dev": "cf dev --test-scheduled",
+		"start": "cf dev --test-scheduled",
+		"cf-typegen": "cf workers types",
 		"fmt": "oxfmt",
 		"lint": "oxlint"
 	},
@@ -20,6 +21,7 @@
 		"@atcute/password-session": "^1.0.2"
 	},
 	"devDependencies": {
+		"cf": "1.0.0-beta.17",
 		"oxfmt": "^0.73.0",
 		"oxlint": "^1.88.0",
 		"oxlint-tsgolint": "^7.0.2004",

@@ -284,6 +284,13 @@ export const glEvents: EventMap = {
 			jp: `星蝕の奔流D.2`,
 		},
 	},
+	[`Haunted Domain II '26`]: {
+		type: EventType.STIA,
+		name: {
+			en: `Haunted Domain II '26`,
+			jp: `ホーンテッドドメインⅡ’26`,
+		},
+	},
 };
 
 export const jpEvents: EventMap = {
@@ -540,6 +547,13 @@ export const jpEvents: EventMap = {
 		name: {
 			en: `The Veil of Stars Descends D.2`,
 			jp: `星蝕の奔流D.2`,
+		},
+	},
+	[`Haunted Domain II '26`]: {
+		type: EventType.STIA,
+		name: {
+			en: `Haunted Domain II '26`,
+			jp: `ホーンテッドドメインⅡ’26`,
 		},
 	},
 };

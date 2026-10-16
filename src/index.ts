@@ -80,11 +80,11 @@ async function runForRegion(
 export default {
 	async fetch(req: Request): Promise<Response> {
 		const url = new URL(req.url);
-		url.pathname = '/__scheduled';
+		url.pathname = '/cdn-cgi/local/scheduled';
 		url.searchParams.set('cron', '16,18,20,22,25,46,48,50,52,55 * * * *');
 
 		return new Response(
-			`PSO2 NGS UQ Alerts Bot\n\nTo test the scheduled handler, ensure you have used "--test-scheduled" then try running:\ncurl "${url.href}"`,
+			`PSO2 NGS UQ Alerts Bot\n\nTo test the scheduled handler, try running:\ncurl "${url.href}"`,
 		);
 	},
 

@@ -1,13 +1,16 @@
 import { type EventMap, EventType, type TimedEvent } from './types';
 
 export function scrape(source: string, eventMap: EventMap): TimedEvent[] {
-	const matches = Array.from(
-		source.matchAll(/>([0-9:]{5})[^]+?>([^]+?)</g),
-		({ 1: time, 2: raw }): TimedEvent => ({
+	const matches = Array.from(source.matchAll(/>([0-9:]{5})[^]+?>([^]+?)</g), (match): TimedEvent => {
+		// both groups are non-optional, so a match always has them
+		const time = match[1]!;
+		const raw = match[2]!;
+
+		return {
 			time,
-			event: raw in eventMap ? eventMap[raw] : { type: EventType.UNKNOWN, raw },
-		}),
-	);
+			event: eventMap[raw] ?? { type: EventType.UNKNOWN, raw },
+		};
+	});
 
 	matches.sort((a, b) => a.time.localeCompare(b.time) || a.event.type - b.event.type);
 	return matches;

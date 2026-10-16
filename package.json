@@ -6,8 +6,8 @@
 	"scripts": {
 		"build": "cf build",
 		"deploy": "cf deploy",
-		"dev": "cf dev --test-scheduled",
-		"start": "cf dev --test-scheduled",
+		"dev": "cf dev",
+		"start": "cf dev",
 		"cf-typegen": "cf workers types",
 		"fmt": "oxfmt",
 		"lint": "oxlint"
@@ -21,11 +21,12 @@
 		"@atcute/password-session": "^1.0.2"
 	},
 	"devDependencies": {
+		"@cloudflare/vite-plugin": "2.0.0-beta.v.0",
 		"cf": "1.0.0-beta.17",
 		"oxfmt": "^0.73.0",
 		"oxlint": "^1.88.0",
 		"oxlint-tsgolint": "^7.0.2004",
 		"typescript": "^7.0.2",
-		"wrangler": "^4.151.0"
+		"vite": "^8.3.4"
 	}
 }

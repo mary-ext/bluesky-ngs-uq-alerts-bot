@@ -1,7 +1,8 @@
 import type { ComposedPost } from '@atcute/bluesky-threading';
 import { publishThread } from '@atcute/bluesky-threading';
-import { Client, ClientResponseError, CredentialManager, type AtpSessionData } from '@atcute/client';
+import { Client } from '@atcute/client';
 import type { Did } from '@atcute/lexicons';
+import { PasswordSession, type PasswordSessionData } from '@atcute/password-session';
 
 import type { Region } from './posts';
 
@@ -26,60 +27,64 @@ export async function createBlueskyClient(options: BlueskyClientOptions): Promis
 	const { region, credentials, kv } = options;
 	const sessionKey = `session:${region}`;
 
-	const auth = new CredentialManager({
-		service: credentials.pds,
-		onSessionUpdate(session) {
-			// persist session to KV (fire and forget)
-			void kv.put(sessionKey, JSON.stringify(session));
+	const stored = await kv.get<PasswordSessionData>(sessionKey, 'json');
+
+	// resumes the stored session if it's still valid, otherwise falls back to a fresh login
+	const session = await PasswordSession.login(
+		{
+			service: credentials.pds,
+			identifier: credentials.identifier,
+			password: credentials.password,
 		},
-		onExpired() {
-			// delete expired session from KV (fire and forget)
-			void kv.delete(sessionKey);
+		{
+			session: getMatchingSession(region, credentials, stored),
+			async onUpdate(data) {
+				// callbacks must not throw
+				try {
+					return await kv.put(sessionKey, JSON.stringify(data));
+				} catch (err) {
+					console.error(`[${region}]: failed to persist session`, err);
+				}
+			},
+			async onDelete() {
+				try {
+					return await kv.delete(sessionKey);
+				} catch (err) {
+					console.error(`[${region}]: failed to delete session`, err);
+				}
+			},
 		},
-	});
-
-	const rpc = new Client({ handler: auth });
-
-	// try to resume existing session
-	const storedSession = await kv.get(sessionKey);
-
-	if (storedSession) {
-		try {
-			const session: AtpSessionData = JSON.parse(storedSession);
-
-			// validate session belongs to the expected account
-			if (credentials.identifier !== session.handle && credentials.identifier !== session.did) {
-				console.log(`[${region}]: session file is for different account, creating new session`);
-			} else {
-				console.log(`[${region}]: resuming session`);
-				await auth.resume(session);
-
-				return {
-					rpc,
-					did: auth.session!.did,
-					handle: auth.session!.handle,
-				};
-			}
-		} catch (err) {
-			if (err instanceof ClientResponseError && err.error === 'ExpiredToken') {
-				console.log(`[${region}]: session expired, creating new session`);
-			} else {
-				console.log(`[${region}]: failed to resume session, creating new session`);
-			}
-		}
-	} else {
-		console.log(`[${region}]: no session found, creating new session`);
-	}
-
-	// create new session
-	await auth.login({ identifier: credentials.identifier, password: credentials.password });
+	);
 
 	return {
-		rpc,
-		did: auth.session!.did,
-		handle: auth.session!.handle,
+		rpc: new Client({ handler: session }),
+		did: session.did,
+		handle: session.session.handle,
 	};
 }
+
+const getMatchingSession = (
+	region: Region,
+	credentials: BlueskyCredentials,
+	stored: PasswordSessionData | null,
+): PasswordSessionData | undefined => {
+	if (!stored) {
+		console.log(`[${region}]: no session found, creating new session`);
+		return undefined;
+	}
+
+	// a changed PDS or account in the worker config invalidates the stored session
+	if (stored.service !== credentials.pds) {
+		console.log(`[${region}]: session is for different service, creating new session`);
+		return undefined;
+	}
+	if (credentials.identifier !== stored.handle && credentials.identifier !== stored.did) {
+		console.log(`[${region}]: session is for different account, creating new session`);
+		return undefined;
+	}
+
+	return stored;
+};
 
 /** publishes posts to bluesky as a thread */
 export async function publishPosts(rpc: Client, did: Did, posts: ComposedPost[]): Promise<void> {

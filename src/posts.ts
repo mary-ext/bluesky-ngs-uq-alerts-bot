@@ -19,9 +19,9 @@ export function buildJpPosts(events: TimedEvent[]): ComposedPost[] {
 	const now = getCurrentTime('jp');
 
 	const jp = new RichtextBuilder()
-		.addTag('pso2ngs')
+		.addTag('#pso2ngs', 'pso2ngs')
 		.addText(' ')
-		.addTag('pso2jp')
+		.addTag('#pso2jp', 'pso2jp')
 		.addText('\n')
 		.addText(`お知らせ (${now})`);
 
@@ -53,9 +53,9 @@ export function buildGlPosts(events: TimedEvent[]): ComposedPost[] {
 	const now = getCurrentTime('gl');
 
 	const rt = new RichtextBuilder()
-		.addTag('pso2ngs')
+		.addTag('#pso2ngs', 'pso2ngs')
 		.addText(' ')
-		.addTag('pso2gl')
+		.addTag('#pso2gl', 'pso2gl')
 		.addText('\n')
 		.addText(`Alerts (${now})`);
 
